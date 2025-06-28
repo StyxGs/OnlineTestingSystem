@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  db:
+    container_name: online_testing-db
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      PGPORT: ${DB_PORT:-5456}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_HOST_AUTH_METHOD: scram-sha-256
+      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256 --auth-local=scram-sha-256
+    ports:
+    - "${DB_PORT:-5456}:5456"
+    volumes:
+    - postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+
+volumes:
+  postgres:
+    name: online_testing-db-data

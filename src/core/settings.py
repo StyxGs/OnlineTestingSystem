@@ -20,7 +20,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'drf_spectacular',
-    'rest_framework'
+    'rest_framework',
+
+    'apps.users',
+    'apps.tests',
 ]
 
 INTERNAL_IPS = [
@@ -93,9 +96,8 @@ REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
     ),
-    'DEFAULT_PAGINATION_CLASS': 'infrastructure.pagination.CustomPageLimitPagination',
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 100,
-    'EXCEPTION_HANDLER': 'infrastructure.exception_handlers.api_exception_handler',
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
@@ -115,7 +117,6 @@ SPECTACULAR_DEFAULTS = {
         'displayOperationId': True,
     },
 }
-
 
 DJANGO_ADMIN_USERNAME = os.environ.get('DJANGO_ADMIN_USERNAME')
 DJANGO_ADMIN_PASSWORD = os.environ.get('DJANGO_ADMIN_PASSWORD')
