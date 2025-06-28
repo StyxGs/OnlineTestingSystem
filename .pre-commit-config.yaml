@@ -1,0 +1,42 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.4.0
+  hooks:
+  - id: double-quote-string-fixer
+  - id: check-yaml
+  - id: check-merge-conflict
+  - id: check-case-conflict
+  - id: end-of-file-fixer
+
+
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  rev: v0.4.8
+  hooks:
+  - id: ruff
+    args: [--fix, --exit-non-zero-on-fix]
+    exclude: 'migrations/|.*config.py|.*local_server.py|.*settings.py|.github/|.helm/|werf.yaml'
+
+- repo: https://github.com/psf/black
+  rev: 24.4.2
+  hooks:
+  - id: black
+    args: [--skip-string-normalization]
+    exclude: (migrations/|settings|.github/|.helm/|werf.yaml)
+    language_version: python3.11
+
+- repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+  rev: v2.13.0
+  hooks:
+  - id: pretty-format-yaml
+    args:
+    - --autofix
+    - --preserve-quotes
+    - --indent=2
+    exclude: 'migrations/|.*config.py|.*local_server.py|.*settings.py|.github/|.helm/|werf.yaml'
+
+- repo: https://github.com/PyCQA/isort
+  rev: 5.13.2
+  hooks:
+  - id: isort
+    args: [--profile=black]
+    exclude: 'migrations/|.*config.py|.*local_server.py|.*settings.py|.github/|.helm/|werf.yaml'
