@@ -2,7 +2,6 @@
 SECRET_KEY = 'django-insecure-oj4@@8s(_q2bn-fg77bk6tv8drxs&vn2ay&w(@+na4@m4*no(#'
 ALLOWED_HOSTS = *
 DEBUG = 1
-KEY = 'supersecretkey16'
 
 DJANGO_SETTINGS_MODULE=core.settings
 DJANGO_ADMIN_USERNAME=admin

@@ -165,7 +165,7 @@ class StartTestSerializer(serializers.ModelSerializer):
                 'id': 1,
                 'user_id': 1,
                 'question_id': 1,
-                'numbers': [1],
+                'selected_choices': [1],
             },
             response_only=True,
         ),
@@ -174,7 +174,7 @@ class StartTestSerializer(serializers.ModelSerializer):
             value={
                 'user_id': 1,
                 'question_id': 1,
-                'selected_choices': [1],
+                'numbers': [1],
             },
             request_only=True,
         ),
