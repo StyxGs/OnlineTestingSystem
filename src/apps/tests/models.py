@@ -20,7 +20,7 @@ class Question(models.Model):
 
 class AnswerOption(models.Model):
     question = models.ForeignKey(
-        'tests.Question', related_name='choices', on_delete=models.CASCADE
+        'tests.Question', related_name='answer_options', on_delete=models.CASCADE
     )
     text = models.CharField(max_length=256)
     number = models.PositiveIntegerField()
@@ -43,3 +43,14 @@ class TestResult(models.Model):
             MaxValueValidator(1),
         ]
     )
+
+    class Meta:
+        constraints = (
+            models.UniqueConstraint(
+                fields=[
+                    'user',
+                    'test',
+                ],
+                name='unique_user_and_test',
+            ),
+        )

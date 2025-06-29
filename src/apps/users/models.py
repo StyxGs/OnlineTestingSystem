@@ -9,4 +9,17 @@ class User(models.Model):
 class UserAnswer(models.Model):
     user = models.ForeignKey('users.User', on_delete=models.CASCADE)
     question = models.ForeignKey('tests.Question', on_delete=models.CASCADE)
-    selected_choices = models.ManyToManyField('tests.AnswerOption')
+    selected_choices = models.ManyToManyField(
+        'tests.AnswerOption', related_name='user_answers'
+    )
+
+    class Meta:
+        constraints = (
+            models.UniqueConstraint(
+                fields=[
+                    'user',
+                    'question',
+                ],
+                name='unique_user_and_question',
+            ),
+        )
