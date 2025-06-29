@@ -45,7 +45,7 @@ class TestViewSet(ModelViewSet):
 
     @extend_schema(request=StartTestSerializer, responses={200: StartTestSerializer})
     @action(
-        methods=['post'], detail=False, url_path='start_test', url_name='start_test'
+        methods=['post'], detail=False, url_path='start-test', url_name='start-test'
     )
     @atomic
     def start_test(self, request: Request, *args, **kwargs) -> Response:
@@ -58,7 +58,7 @@ class TestViewSet(ModelViewSet):
         request=SaveAnswerTestSerializer, responses={200: SaveAnswerTestSerializer}
     )
     @action(
-        methods=['post'], detail=False, url_path='save_answer', url_name='save_answer'
+        methods=['post'], detail=False, url_path='save-answer', url_name='save-answer'
     )
     @atomic
     def save_answer(self, request: Request, *args, **kwargs) -> Response:
@@ -78,7 +78,7 @@ class TestViewSet(ModelViewSet):
             ),
         ],
     )
-    @action(methods=['get'], detail=True, url_path='user_test', url_name='user_test')
+    @action(methods=['get'], detail=True, url_path='user-test', url_name='user-test')
     def user_test(self, request: Request, *args, **kwargs) -> Response:
         instance = self.get_object()
         user_id = request.query_params.get('user_id')
@@ -95,7 +95,7 @@ class TestViewSet(ModelViewSet):
             ),
         ],
     )
-    @action(methods=['post'], detail=True, url_path='end_test', url_name='end_test')
+    @action(methods=['post'], detail=True, url_path='end-test', url_name='end-test')
     @atomic
     def end_test(self, request: Request, *args, **kwargs) -> Response:
         instance = TestResult.objects.filter(
