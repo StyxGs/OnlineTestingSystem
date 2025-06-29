@@ -64,21 +64,6 @@ docker run -p 8000:8000 online-testing-system
 После запуска Swagger UI будет доступен по адресу:  
 [http://localhost:8000/api/schema/swagger-ui/#/](http://localhost:8000/api/schema/swagger-ui/#/)
 
----
-
-## Запуск локально (без Docker)
-
-Если хотите запускать проект локально, выполните:
-
-```bash
-python3 manage.py migrate
-uvicorn core.asgi:application --host 0.0.0.0 --port 8000
-```
-
-> Замените `core` на имя вашего Django-проекта (папка с `asgi.py`).
-
----
-
 ## Время разработки
 
 - Общая затраченная работа: **8-9 часов**  
