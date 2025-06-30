@@ -10,6 +10,6 @@ DJANGO_ADMIN_PASSWORD=admin
 # db
 DB_USER = admin
 DB_PASSWORD = admin
-DB_NAME = core
-DB_HOST = localhost
-DB_PORT = 5433
+DB_NAME = online_testing
+DB_HOST = db
+DB_PORT = 5456
